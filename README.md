@@ -1,7 +1,10 @@
 # standards
 
-Reusable agent skills (`SKILL.md` per directory) for project standards, packaged as a
-Claude Code plugin.
+Reusable agent skills (`SKILL.md` per directory) for project standards, packaged as
+one shared plugin for Claude Code and Codex.
+
+Skills are plain markdown with no hooks or per-surface glue, so both agents read the
+same files. Each skill's `description` says when to load it.
 
 ## Skills
 
@@ -9,131 +12,114 @@ Seventeen, in four groups.
 
 ### Code
 
-- [nextjs](skills/nextjs/SKILL.md) — App Router conventions, runtime foundations, folder structure
-- [components](skills/components/SKILL.md) — shadcn/CVA component authoring shape and atomic-design organization
-- [data](skills/data/SKILL.md) — content/state location and discipline (`constants/`, dates, media)
-- [testing](skills/testing/SKILL.md) — testing strategy stance
-- [performance](skills/performance/SKILL.md) — LCP, lazy-loading, motion/font budgets
-- [accessibility](skills/accessibility/SKILL.md) — WCAG 2.0 AA baseline, motion, focus, contrast
-- [seo](skills/seo/SKILL.md) — metadata, Open Graph, crawlable content
+- [nextjs](plugins/standards/skills/nextjs/SKILL.md): App Router conventions, runtime foundations, folder structure
+- [components](plugins/standards/skills/components/SKILL.md): shadcn/CVA authoring shape, atomic-design organization
+- [data](plugins/standards/skills/data/SKILL.md): content and state location (`constants/`, dates, media)
+- [testing](plugins/standards/skills/testing/SKILL.md): testing strategy stance
+- [performance](plugins/standards/skills/performance/SKILL.md): LCP, lazy-loading, motion and font budgets
+- [accessibility](plugins/standards/skills/accessibility/SKILL.md): WCAG 2.0 AA baseline, motion, focus, contrast
+- [seo](plugins/standards/skills/seo/SKILL.md): metadata, Open Graph, crawlable content
 
 ### Craft
 
-- [writing](skills/writing/SKILL.md) — the writing standard: Orwell + STE, anti-slop, assistant tone, house rules. **Always on**, see [Always-on skills](#always-on-skills)
-- [git](skills/git/SKILL.md) — Conventional Commits, branch naming, no-AI-attribution
-- [process](skills/process/SKILL.md) — delivery methodology: PRD pipeline, milestones, review tiers
-- [estimation](skills/estimation/SKILL.md) — sizing work
-- [figma](skills/figma/SKILL.md) — reading designs out of Figma: node structure over screenshots
-- [vscode](skills/vscode/SKILL.md) — editor-session hygiene (reopen after a move/rename)
-- [claude](skills/claude/SKILL.md) — Claude Code repo hygiene (CLAUDE.md symlink, gitignoring local state)
+- [writing](plugins/standards/skills/writing/SKILL.md): the prose standard, and the only skill that is not task-scoped
+- [git](plugins/standards/skills/git/SKILL.md): Conventional Commits, branch naming, no AI attribution
+- [process](plugins/standards/skills/process/SKILL.md): PRD pipeline, milestones, review tiers
+- [estimation](plugins/standards/skills/estimation/SKILL.md): sizing work
+- [figma](plugins/standards/skills/figma/SKILL.md): reading designs out of Figma, node structure over screenshots
+- [vscode](plugins/standards/skills/vscode/SKILL.md): editor-session hygiene after a move or rename
+- [claude](plugins/standards/skills/claude/SKILL.md): Claude Code repo hygiene
 
 ### Agents
 
-- [engineering](skills/engineering/SKILL.md) — harness engineering: the bundled corpus and routing for unresolved agent-design decisions
+- [engineering](plugins/standards/skills/engineering/SKILL.md): harness engineering corpus and routing
 
 ### Scrapers
 
-- [jd-scrape](skills/jd-scrape/SKILL.md) — scraping a job posting or careers page into structured facts
-- [listing-scrape](skills/listing-scrape/SKILL.md) — scraping a rental/real-estate listing into structured facts
-
-## Always-on skills
-
-Skills load on demand: Claude matches the task against each skill's `description` and
-reads the ones that fit. That is right for every skill here except one.
-
-[writing](skills/writing/SKILL.md) governs prose the agent produces whether or not a
-writing task was requested, including its own chat replies, so on-demand loading
-misses most of the cases it should cover. The plugin ships a `UserPromptSubmit` hook
-that injects a compact form of the standard on every prompt:
-
-```text
-hooks/
-  hooks.json            UserPromptSubmit → cat the compact standard
-  writing-always.txt    the injected text: ~20 lines, the rules without the reasoning
-```
-
-The hook activates when the plugin is installed and needs no per-repo setup. It costs
-about 250 tokens per prompt, which is why the injected file is a summary and the full
-standard stays in `SKILL.md` for anything longer than a short reply. Keep the two in
-step when either changes.
+- [jd-scrape](plugins/standards/skills/jd-scrape/SKILL.md): a job posting into structured facts
+- [listing-scrape](plugins/standards/skills/listing-scrape/SKILL.md): a rental or real-estate listing into structured facts
 
 ## Installing
 
-This repo is both a plugin and its own marketplace, so it installs directly from
-GitHub. Add the marketplace, then install the plugin from it — how you do that
-depends on the surface:
+The repo is both a plugin and its own marketplace, so it installs from GitHub. Add
+the marketplace, then install the plugin from it.
 
-- **Claude Code CLI** — run in chat:
+**Codex** reads [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json):
 
-  ```sh
-  /plugin marketplace add htkoca/standards
-  /plugin install standards@htkoca
-  ```
+```sh
+codex plugin marketplace add https://github.com/htkoca/standards --ref main
+codex plugin add standards@htkoca
+```
 
-- **Claude Code in VS Code** — run `/plugin` in chat, then: marketplaces → add the
-  standards git repo → install the standards plugin from it.
-- **Claude Code and Claude chat, desktop app** — click customize, then: marketplaces
-  → add the standards git repo → install the standards plugin from it.
+Start a new thread afterward. Codex loads plugin skills at thread startup, so an open
+thread will not see a new or updated install.
 
-Plugin skills are namespaced by plugin name, so they invoke as
-`/standards:nextjs`, `/standards:git`, and so on. Claude also picks them
-up automatically when a task matches a skill's `description`.
+**Claude Code CLI**, in chat:
 
-Each surface installs its own copy. Installing on one does not install on the rest,
-and neither does updating — see below.
+```sh
+/plugin marketplace add htkoca/standards
+/plugin install standards@htkoca
+```
 
-### Updating
+In VS Code and the desktop app, run `/plugin` (or click customize), then: marketplaces
+→ add the standards git repo → install the standards plugin from it.
 
-Installs do **not** track `main`. Claude Code copies the plugin into
-`~/.claude/plugins/cache/<marketplace>/<plugin>/<sha>/` at install time and pins it
-to that commit SHA. The copy is a flat snapshot, not a git checkout, so pushing here
-changes nothing on an already-installed machine.
+Skills are namespaced by plugin: `/standards:nextjs`, `/standards:git`. Both agents
+also load them on their own when a task matches a `description`.
+
+Each surface installs its own copy. Installing or updating on one does nothing to the
+rest.
+
+## Updating
+
+Installs pin to a commit SHA rather than tracking `main`. Claude Code copies the
+plugin into `~/.claude/plugins/cache/<marketplace>/<plugin>/<sha>/` as a flat
+snapshot, not a git checkout, so pushing here changes nothing on an installed machine.
 
 Two steps, per machine:
 
 ```sh
-/plugin marketplace update htkoca   # pull the marketplace clone
+/plugin marketplace update htkoca   # refresh the catalog
 /plugin update standards@htkoca     # re-snapshot the plugin
 ```
 
-The first alone is not enough — it refreshes the catalog, not the installed skills.
+The first alone is not enough: it refreshes the catalog, not the installed skills.
+The Codex equivalent is `codex plugin marketplace upgrade htkoca` then
+`codex plugin add standards@htkoca`.
 
-### Versioning
+## Versioning
 
-[`plugin.json`](.claude-plugin/plugin.json) carries a `version`, bumped by **patch**
-on every commit. Minor and major are set by hand, by the repo owner only. See
-[CLAUDE.md](CLAUDE.md) for the rule agents follow.
+[`.claude-plugin/plugin.json`](plugins/standards/.claude-plugin/plugin.json) and
+[`.codex-plugin/plugin.json`](plugins/standards/.codex-plugin/plugin.json) carry
+matching `version` values, bumped by patch on every commit. Minor and major are the
+owner's to set. See [AGENTS.md](AGENTS.md) for the rule agents follow.
 
-The version is diagnostic rather than a release channel: updates always move to the
-tip of `main`, and there is no way to install a pinned older version. What it buys
-is a readable answer to "is this install current?" — compare the `version` here
-against the entry for `standards@htkoca` in
-`~/.claude/plugins/installed_plugins.json`, which records both the resolved version
-and the `gitCommitSha` it was taken from.
+The version is diagnostic, not a release channel: updates always move to the tip of
+`main`, and no older version is installable. What it buys is a readable answer to "is
+this install current?". Compare it against the `standards@htkoca` entry in
+`~/.claude/plugins/installed_plugins.json`, which records the resolved version and the
+`gitCommitSha` it came from.
 
 ## Layout
 
-Standard Claude Code plugin structure:
+The repository root is the marketplace. The plugin package lives under
+`plugins/standards/` so an install copies a self-contained directory.
 
 ```text
 .claude-plugin/
-  plugin.json         plugin manifest (name, version, metadata)
-  marketplace.json    marketplace catalog listing this repo as its own plugin
-skills/
-  <name>/SKILL.md     one directory per skill
-hooks/
-  hooks.json          hook config, loaded automatically from this path
-  writing-always.txt  text injected on every prompt (see Always-on skills)
+  marketplace.json      Claude marketplace catalog
+.agents/
+  plugins/
+    marketplace.json    Codex marketplace catalog
+plugins/
+  standards/
+    .claude-plugin/
+      plugin.json       Claude plugin manifest
+    .codex-plugin/
+      plugin.json       Codex plugin manifest
+    skills/
+      <name>/SKILL.md   one directory per skill
 ```
 
-The `skills/` directory is scanned by default, so the manifest needs no `skills`
-field — and adding one would replace that default scan rather than extend it, since
-the marketplace entry's `source` resolves to the marketplace root.
-
-## Consuming repos
-
-[CLAUDE.md](CLAUDE.md) documents rules for working in *this* repo. Reference it
-from a consuming project's `CLAUDE.md` rather than merging its content in.
-
-These skills target Claude Code only. There is no `AGENTS.md` here, and no
-vendoring path for Codex or OpenCode.
+Both marketplaces point at `./plugins/standards`, which holds the only copy of the
+skills.
