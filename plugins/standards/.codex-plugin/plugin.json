@@ -1,0 +1,38 @@
+{
+  "name": "standards",
+  "version": "0.1.6",
+  "description": "Reusable agent skills for project standards: frontend architecture, design systems, accessibility, git and delivery process, plus scraping skills for job postings and rental listings.",
+  "author": {
+    "name": "Tony Ko",
+    "url": "https://github.com/htkoca"
+  },
+  "repository": "https://github.com/htkoca/standards",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "standards",
+    "nextjs",
+    "design-systems",
+    "accessibility",
+    "process"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Standards",
+    "shortDescription": "Reusable project standards for coding agents",
+    "longDescription": "Reusable agent skills for project standards: frontend architecture, design systems, accessibility, git and delivery process, plus scraping skills for job postings and rental listings.",
+    "developerName": "Tony Ko",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/htkoca/standards",
+    "brandColor": "#2563EB",
+    "defaultPrompt": [
+      "Use the standards skills for this repo",
+      "Review this implementation against the standards",
+      "Plan this feature using the process standard"
+    ]
+  }
+}

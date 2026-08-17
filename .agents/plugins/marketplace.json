@@ -1,0 +1,20 @@
+{
+  "name": "htkoca",
+  "interface": {
+    "displayName": "Tony Ko"
+  },
+  "plugins": [
+    {
+      "name": "standards",
+      "source": {
+        "source": "local",
+        "path": "./plugins/standards"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

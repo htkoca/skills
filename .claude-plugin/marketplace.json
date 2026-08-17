@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "standards",
-      "source": "./",
+      "source": "./plugins/standards",
       "description": "Reusable agent skills for project standards — frontend architecture, design systems, accessibility, git and delivery process, plus scraping skills for job postings and rental listings."
     }
   ]
