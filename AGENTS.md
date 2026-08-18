@@ -1,4 +1,4 @@
-# Agent instructions for this repo
+# Agent Instructions
 
 See [README.md](README.md) for what this repo is and how other repos use it.
 
