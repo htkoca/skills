@@ -76,16 +76,24 @@ Installs pin to a commit SHA rather than tracking `main`. Claude Code copies the
 plugin into `~/.claude/plugins/cache/<marketplace>/<plugin>/<sha>/` as a flat
 snapshot, not a git checkout, so pushing here changes nothing on an installed machine.
 
-Two steps, per machine:
+Two steps, per machine.
+
+**Codex:**
+
+```sh
+codex plugin marketplace upgrade htkoca   # refresh the catalog
+codex plugin add skills@htkoca            # re-snapshot the plugin
+```
+
+**Claude Code:**
 
 ```sh
 /plugin marketplace update htkoca   # refresh the catalog
-/plugin update skills@htkoca     # re-snapshot the plugin
+/plugin update skills@htkoca        # re-snapshot the plugin
 ```
 
-The first alone is not enough: it refreshes the catalog, not the installed skills.
-The Codex equivalent is `codex plugin marketplace upgrade htkoca` then
-`codex plugin add skills@htkoca`.
+The first command alone is not enough on either surface: it refreshes the catalog,
+not the installed skills.
 
 ## Versioning
 
