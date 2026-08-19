@@ -4,8 +4,8 @@ See [README.md](README.md) for what this repo is and how other repos use it.
 
 ## On every commit: bump the patch version
 
-[`plugins/standards/.claude-plugin/plugin.json`](plugins/standards/.claude-plugin/plugin.json)
-and [`plugins/standards/.codex-plugin/plugin.json`](plugins/standards/.codex-plugin/plugin.json)
+[`plugins/skills/.claude-plugin/plugin.json`](plugins/skills/.claude-plugin/plugin.json)
+and [`plugins/skills/.codex-plugin/plugin.json`](plugins/skills/.codex-plugin/plugin.json)
 carry matching `version` values. Bump the **patch** number in both, in the same commit
 as the change, always and without being asked:
 
