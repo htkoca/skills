@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "standards",
-  "version": "0.1.6",
-  "displayName": "Standards",
+  "name": "skills",
+  "version": "0.1.8",
+  "displayName": "Skills",
   "description": "Reusable agent skills for project standards — frontend architecture, design systems, accessibility, git and delivery process, plus scraping skills for job postings and rental listings.",
   "author": {
     "name": "Tony Ko",
     "url": "https://github.com/htkoca"
   },
-  "repository": "https://github.com/htkoca/standards",
+  "repository": "https://github.com/htkoca/skills",
   "license": "MIT",
   "keywords": [
     "skills",
