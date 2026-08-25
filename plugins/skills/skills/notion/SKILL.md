@@ -1,6 +1,6 @@
 ---
 name: notion
-description: Notion, Notion MCP, notion.so URL, teamspace, page tree, fetch, search, move-pages, update-page, update_content, replace_content, filing a note in Notion, archiving a page, duplicate page titles. Use for any read or write against Notion through the MCP connector: mapping the workspace, finding where a page lives, editing page content, or moving something.
+description: Notion, Notion MCP, notion.so URL, teamspace, Agents section, page tree, fetch, search, move-pages, update-page, update_content, replace_content, filing a note in Notion, archiving a page, duplicate page titles. Use for any read or write against Notion through the MCP connector: mapping the workspace, finding where a page lives, editing page content, or moving something.
 ---
 
 # Notion
@@ -19,11 +19,28 @@ as `notion-fetch` and so on.
    or instructions child page: the prose sits on the domain page above its child list,
    and Notion renders the child list itself. Never write an inventory of child pages
    into a page's text. It drifts, and the rendered list does not.
-4. **Teamspaces mirror each other's names on purpose.** The same domain and pillar
+4. **Agent-facing rules live under an `Agents` heading** at the end of that prose.
+   Everything above it describes the domain and is written for a person. Everything
+   under it is working rules: what to load, what the guardrails are, what format a new
+   page takes.
+5. **Teamspaces mirror each other's names on purpose.** The same domain and pillar
    names appear in more than one teamspace, so a bare title never identifies a page.
    See "Duplicate titles" below.
-5. **The workspace is the authority, not this description.** When what you fetch does
+6. **The workspace is the authority, not this description.** When what you fetch does
    not match the shape above, follow what is there and say so.
+
+## Load skills before pages
+
+1. **Pull every skill the session will plausibly need up front,** before the first
+   page fetch. Deciding at the point of need is too late: a leaf page fetch is large,
+   and a skill loaded after it competes with the page content for the room to use it.
+2. **The writing skill applies to every word written into a page,** so it is always
+   one of them.
+3. **Read the domain page first, then load in one pass** what its `Agents` section
+   names and the skills that match the task: `listing-scrape` for a rental listing,
+   `jd-scrape` for a job posting, `git` when repo work follows from the note.
+4. **Err toward loading one skill too many.** A skill is small next to a page of
+   content, and the cost of not having it is work redone.
 
 ## Mapping the tree
 
