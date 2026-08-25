@@ -61,7 +61,10 @@ as `notion-fetch` and so on.
 
 1. **Fetch cost is bimodal.** A container page returns little more than its child
    list. A leaf page returns its full content.
-2. **Map containers first, open leaves last.** Walk the structure with container
+2. **A database page fetch costs like a leaf.** It returns the full schema, every
+   property, and every view definition. When you want rows, query the data source
+   instead. Fetch the database page only when you need the schema itself.
+3. **Map containers first, open leaves last.** Walk the structure with container
    fetches until you know which leaf you actually need, then open that one. Opening
    leaves early is the main way a Notion session runs out of context.
 
