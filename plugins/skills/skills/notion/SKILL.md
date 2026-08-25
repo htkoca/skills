@@ -11,10 +11,11 @@ as `notion-fetch` and so on.
 
 ## How the workspace is laid out
 
-1. **Each teamspace holds three things at its root:** one container page, `Archive`,
-   and `Unsorted`. Everything else lives under the container.
-2. **Inside the container are the domain pages,** and each domain page holds its
-   pillar children.
+1. **A teamspace root holds two pages:** the container page and `Unsorted`.
+   `Unsorted` is the inbox and stays outside the container on purpose.
+2. **The container holds everything else:** the root pillars (`About`, `Finances`,
+   `Projects`), the domain pages, and `Archive`. Each domain page holds its pillar
+   children.
 3. **A domain page carries its own instructions inline.** There is no separate README
    or instructions child page: the prose sits on the domain page above its child list,
    and Notion renders the child list itself. Never write an inventory of child pages
