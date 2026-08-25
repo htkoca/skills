@@ -55,15 +55,15 @@ codex plugin add skills@htkoca
 Start a new thread afterward. Codex loads plugin skills at thread startup, so an open
 thread will not see a new or updated install.
 
-**Claude Code CLI**, in chat:
+**Claude Code** reads [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json):
 
 ```sh
-/plugin marketplace add htkoca/skills
-/plugin install skills@htkoca
+claude plugin marketplace add https://github.com/htkoca/skills.git
+claude plugin install skills@htkoca
 ```
 
-In VS Code and the desktop app, run `/plugin` (or click customize), then: marketplaces
-→ add the skills git repo → install the skills plugin from it.
+Start a new thread afterward. Claude loads plugin skills at thread startup, so an open
+thread will not see a new or updated install.
 
 Skills are namespaced by plugin: `/skills:nextjs`, `/skills:git`. Both agents
 also load them on their own when a task matches a `description`.
@@ -89,12 +89,9 @@ codex plugin add skills@htkoca            # re-snapshot the plugin
 **Claude Code:**
 
 ```sh
-/plugin marketplace update htkoca   # refresh the catalog
-/plugin update skills@htkoca        # re-snapshot the plugin
+claude plugin marketplace update htkoca   # refresh the catalog
+claude plugin update skills@htkoca        # re-snapshot the plugin
 ```
-
-The first command alone is not enough on either surface: it refreshes the catalog,
-not the installed skills.
 
 ## Versioning
 
