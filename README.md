@@ -8,7 +8,7 @@ same files. Each skill's `description` says when to load it.
 
 ## Skills
 
-Seventeen, in four groups.
+Eighteen, in four groups.
 
 ### Code
 
@@ -27,6 +27,7 @@ Seventeen, in four groups.
 - [process](plugins/skills/skills/process/SKILL.md): PRD pipeline, milestones, review tiers
 - [estimation](plugins/skills/skills/estimation/SKILL.md): sizing work
 - [figma](plugins/skills/skills/figma/SKILL.md): reading designs out of Figma, node structure over screenshots
+- [notion](plugins/skills/skills/notion/SKILL.md): navigating and editing a Notion workspace over MCP
 - [vscode](plugins/skills/skills/vscode/SKILL.md): editor-session hygiene after a move or rename
 - [claude](plugins/skills/skills/claude/SKILL.md): Claude Code repo hygiene
 
