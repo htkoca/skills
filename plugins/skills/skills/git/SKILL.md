@@ -1,6 +1,6 @@
 ---
 name: git
-description: git, commit message, Conventional Commits, feat/fix/chore/docs, branch name, branching, PR, pull request, opening a PR, PR review, code review of a diff, merge, rebase, push, AI attribution, Co-Authored-By. Use when creating a branch, writing a commit or PR body, reviewing a PR, or deciding how a change gets recorded in git.
+description: git, worktree, commit message, Conventional Commits, feat/fix/chore/docs, branch name, branching, PR, pull request, opening a PR, PR review, code review of a diff, merge, rebase, push, AI attribution, Co-Authored-By. Use when starting work on a ticket or feature, creating a worktree or branch, writing a commit or PR body, reviewing a PR, or deciding how a change gets recorded in git.
 ---
 
 # Git
@@ -9,9 +9,18 @@ How change is recorded.
 
 ## Workflow
 
-1. **Work on the branch defined for the task at hand.** Never push directly to `main`.
-2. **Create new commits rather than amending.** Never force-push or skip hooks without explicit permission.
-3. **Task PRs target their milestone branch; milestone PRs target the latest `main`.** Work outside a milestone stays on a feature branch and PRs only when explicitly asked.
+1. **Start a ticket or feature in a git worktree**, on a new branch cut from the latest
+   `main`. Fetch first so the branch starts from the current remote tip, not a stale local
+   one. Work on the branch defined for the task when one already exists.
+2. **Stop at working-tree changes.** Implementation ends with the edits on disk: no commit,
+   no push, no PR. Say the work is done and what changed, then let the owner decide what
+   happens to it.
+3. **Committing and pushing are the owner's call, every time.** Ask and wait, even when a
+   previous change in the same session was committed and pushed. Never push directly to
+   `main`.
+4. **Create new commits rather than amending.** Never force-push or skip hooks without
+   explicit permission.
+5. **Task PRs target their milestone branch; milestone PRs target the latest `main`.** Work outside a milestone stays on a feature branch and PRs only when explicitly asked.
 
 ## SSH agent timeouts
 
