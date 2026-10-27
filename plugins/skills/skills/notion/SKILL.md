@@ -1,6 +1,6 @@
 ---
 name: notion
-description: Read before personal advice, planning, chats, career work, project/client work, business ideation, or resale tasks for Tony. Routes to the workspace guides in his htkoca (personal) and tkodev (career and work) Notion workspaces.
+description: Read before advising or acting on Tony's personal background, life, relationships, dating, social life, chats, events, goals, planning, housing, finances, travel, home, hobbies, professional background, career, job search, applications, resumes, interviews, recruiter chats, project/client work, compensation, corporate administration, ideation, business ideas, venture planning, or resale listings. Routes to the htkoca (personal) and tkodev (career and work) Notion guides, even when Notion is not mentioned.
 ---
 
 # Notion
