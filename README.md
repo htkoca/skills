@@ -1,7 +1,7 @@
 # skills
 
-Two plugins for Claude Code and Codex, published from one repository and the
-`htkoca` marketplace:
+Two skill packages for ChatGPT, Codex, and Claude Code, maintained in one
+repository and also published through the `htkoca` marketplace:
 
 - **[skills-software](plugins/skills-software/README.md):** coding, design, testing, git, estimation, delivery, writing,
   and agent conventions.
@@ -13,9 +13,13 @@ Skills are plain Markdown with no hooks or per-surface glue. Each skill's
 
 ## Installing
 
-Add the marketplace once, then install either or both plugins.
+**ChatGPT and Codex (preferred):**
 
-**Codex:**
+Install either or both packages as private skills through chat or Plugin Creator.
+This is the owner's preferred workflow; use marketplace installation only when
+requested.
+
+**Codex marketplace (optional):**
 
 ```sh
 codex plugin marketplace add https://github.com/htkoca/skills --ref main
@@ -31,20 +35,24 @@ claude plugin install skills-software@htkoca
 claude plugin install skills-notes@htkoca
 ```
 
-Start a new Codex chat and restart Claude Code after installing. Each surface owns
-its installation; updating one does not update the others. Verify installation in
-regular ChatGPT separately.
+For marketplace installs, start a new Codex chat or restart Claude Code after
+installing. Verify private skill imports in the destination app. Each app owns
+its installation; updating one does not update the others.
 
-Skills are namespaced by plugin, for example `/skills-software:nextjs` and
+Marketplace skills are namespaced by plugin, for example `/skills-software:nextjs` and
 `/skills-notes:notes`. Agents also select skills when the request matches their
 description. Shared writing and agent conventions live in skills-software.
 
 ## Updating
 
-Installs are snapshots pinned to a commit SHA. Pushing this repository does not
-update installed copies.
+Pushing this repository does not update installed copies.
 
-**Codex:**
+**ChatGPT and Codex (preferred):**
+
+Import the updated skills through chat or Plugin Creator to update the private
+copies. Verify the update in each app separately.
+
+**Codex marketplace (optional):**
 
 ```sh
 codex plugin marketplace upgrade htkoca
@@ -62,8 +70,9 @@ claude plugin update skills-notes@htkoca
 
 ## Migrating from the old plugin
 
-The two plugins replace `skills@htkoca`. Install the replacements using the commands
-above, then remove the old plugin to avoid duplicate skill discovery:
+The two packages replace `skills@htkoca`. Import the private skills or install
+the replacement marketplace plugins using the appropriate workflow above, then
+remove the old plugin where installed to avoid duplicate skill discovery:
 
 ```sh
 codex plugin remove skills@htkoca

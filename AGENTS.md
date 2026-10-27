@@ -39,10 +39,10 @@ Keep the plugin summary in sync with its manifests. The root README links to
 plugin READMEs; do not duplicate skill lists there or hide descriptions in HTML
 comments.
 
-## ChatGPT Plus installation
+## ChatGPT and Codex installation preference
 
-The owner imported these skills through ChatGPT's Plugin Creator. As reported
-by the owner, ChatGPT Plus does not support installing marketplace plugins
-from GitHub. Treat this as a separate manual installation: pushing this repo
-or updating the Codex or Claude Code plugins does not update the ChatGPT copy.
-When updating that copy, use Plugin Creator to import the updated skills.
+For ChatGPT and Codex, the owner prefers installing and updating these as
+private skills through chat or Plugin Creator instead of marketplace plugins.
+Use that workflow by default unless the owner requests a marketplace install.
+Pushing this repo does not update imported copies; import the updated skills
+through chat or Plugin Creator when an update is requested.
