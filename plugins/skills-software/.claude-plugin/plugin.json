@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "skills-software",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "displayName": "Skills Software",
   "description": "Tony Ko's software standards for frontend architecture, Next.js, components, data, testing, performance, accessibility, SEO, Figma, git, estimation, delivery, writing, and agent engineering. Use when planning, building, reviewing, or maintaining software.",
   "author": {
