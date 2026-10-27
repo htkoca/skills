@@ -18,7 +18,7 @@ at the start of each session, even when Notion is not mentioned:
 
 Select the matching Notion connection. Before giving advice or taking action, read
 Start Here's Page directory and Agents section. Follow the relevant pages, reading
-their directories, Agents sections or Agents child pages, and required context
+their directories, Agents sections, and required context
 before proceeding. Collapsible sections must be read too; a directory listing alone
 does not replace reading the linked context.
 
