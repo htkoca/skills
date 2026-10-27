@@ -1,6 +1,6 @@
 ---
 name: vscode
-description: Editor session, VS Code window, stale path, repo moved, directory renamed, `mv` the repo, reopen at new path, `code <path>`, stale file tree. Use right after this repo's directory is moved or renamed, so the open editor is not pointed at the old path.
+description: Editor session, VS Code window, stale path, repo moved, directory renamed, `mv` the repo, reopen at new path, `code` command, stale file tree. Use right after this repo's directory is moved or renamed, so the open editor is not pointed at the old path.
 ---
 
 # VS Code

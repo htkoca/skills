@@ -1,131 +1,130 @@
 # skills
 
-Reusable agent skills (`SKILL.md` per directory) for project standards, packaged as
-one shared plugin for Claude Code and Codex.
+Two plugins for Claude Code and Codex, published from one repository and the
+`htkoca` marketplace:
 
-Skills are plain markdown with no hooks or per-surface glue, so both agents read the
-same files. Each skill's `description` says when to load it.
+- **skills-software:** coding, design, testing, git, estimation, delivery, writing,
+  and agent conventions.
+- **skills-notes:** personal and work Notion context, plus job and rental listing
+  capture.
 
-## Skills
+Skills are plain Markdown with no hooks or per-surface glue. Each skill's
+`description` says when to load it.
 
-Eighteen, in four groups.
+## Skills Software
 
-### Code
+Fifteen skills in `plugins/skills-software/`.
 
-- [nextjs](plugins/skills/skills/nextjs/SKILL.md): App Router conventions, runtime foundations, folder structure
-- [components](plugins/skills/skills/components/SKILL.md): shadcn/CVA authoring shape, atomic-design organization
-- [data](plugins/skills/skills/data/SKILL.md): content and state location (`constants/`, dates, media)
-- [testing](plugins/skills/skills/testing/SKILL.md): testing strategy stance
-- [performance](plugins/skills/skills/performance/SKILL.md): LCP, lazy-loading, motion and font budgets
-- [accessibility](plugins/skills/skills/accessibility/SKILL.md): WCAG 2.0 AA baseline, motion, focus, contrast
-- [seo](plugins/skills/skills/seo/SKILL.md): metadata, Open Graph, crawlable content
+- [nextjs](plugins/skills-software/skills/nextjs/SKILL.md): App Router conventions, runtime foundations, folder structure
+- [components](plugins/skills-software/skills/components/SKILL.md): shadcn/CVA authoring shape, atomic-design organization
+- [data](plugins/skills-software/skills/data/SKILL.md): content and state location (`constants/`, dates, media)
+- [testing](plugins/skills-software/skills/testing/SKILL.md): testing strategy stance
+- [performance](plugins/skills-software/skills/performance/SKILL.md): LCP, lazy-loading, motion and font budgets
+- [accessibility](plugins/skills-software/skills/accessibility/SKILL.md): WCAG 2.0 AA baseline, motion, focus, contrast
+- [seo](plugins/skills-software/skills/seo/SKILL.md): metadata, Open Graph, crawlable content
+- [writing](plugins/skills-software/skills/writing/SKILL.md): the prose standard, and the only skill that is not task-scoped
+- [git](plugins/skills-software/skills/git/SKILL.md): Conventional Commits, branch naming, no AI attribution
+- [process](plugins/skills-software/skills/process/SKILL.md): PRD pipeline, milestones, review tiers
+- [estimation](plugins/skills-software/skills/estimation/SKILL.md): sizing work
+- [figma](plugins/skills-software/skills/figma/SKILL.md): reading designs out of Figma, node structure over screenshots
+- [vscode](plugins/skills-software/skills/vscode/SKILL.md): editor-session hygiene after a move or rename
+- [agents](plugins/skills-software/skills/agents/SKILL.md): shared instructions and repo hygiene for Claude, Claude Code, ChatGPT, and Codex
+- [engineering](plugins/skills-software/skills/engineering/SKILL.md): harness engineering corpus and routing
 
-### Craft
+## Skills Notes
 
-- [writing](plugins/skills/skills/writing/SKILL.md): the prose standard, and the only skill that is not task-scoped
-- [git](plugins/skills/skills/git/SKILL.md): Conventional Commits, branch naming, no AI attribution
-- [process](plugins/skills/skills/process/SKILL.md): PRD pipeline, milestones, review tiers
-- [estimation](plugins/skills/skills/estimation/SKILL.md): sizing work
-- [figma](plugins/skills/skills/figma/SKILL.md): reading designs out of Figma, node structure over screenshots
-- [notion](plugins/skills/skills/notion/SKILL.md): when and where to read personal and career instructions in Notion
-- [vscode](plugins/skills/skills/vscode/SKILL.md): editor-session hygiene after a move or rename
+Three skills in `plugins/skills-notes/`.
 
-### Agents
-
-- [agents](plugins/skills/skills/agents/SKILL.md): shared instructions and repo hygiene for Claude, Claude Code, ChatGPT, and Codex
-- [engineering](plugins/skills/skills/engineering/SKILL.md): harness engineering corpus and routing
-
-### Scrapers
-
-- [jd-scrape](plugins/skills/skills/jd-scrape/SKILL.md): a job posting into structured facts
-- [listing-scrape](plugins/skills/skills/listing-scrape/SKILL.md): a rental or real-estate listing into structured facts
+- [notes](plugins/skills-notes/skills/notes/SKILL.md): when and where to read personal and career instructions in Notion
+- [jd-scrape](plugins/skills-notes/skills/jd-scrape/SKILL.md): a job posting into structured facts
+- [listing-scrape](plugins/skills-notes/skills/listing-scrape/SKILL.md): a rental or real-estate listing into structured facts
 
 ## Installing
 
-The repo is both a plugin and its own marketplace, so it installs from GitHub. Add
-the marketplace, then install the plugin from it.
-
-**Codex** reads [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json):
-
-```sh
-codex plugin marketplace add https://github.com/htkoca/skills --ref main
-codex plugin add skills@htkoca
-```
-
-Start a new thread afterward. Codex loads plugin skills at thread startup, so an open
-thread will not see a new or updated install.
-
-**Claude Code** reads [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json):
-
-```sh
-claude plugin marketplace add https://github.com/htkoca/skills.git
-claude plugin install skills@htkoca
-```
-
-Start a new thread afterward. Claude loads plugin skills at thread startup, so an open
-thread will not see a new or updated install.
-
-Skills are namespaced by plugin: `/skills:nextjs`, `/skills:git`. Both agents
-also load them on their own when a task matches a `description`.
-
-Each surface installs its own copy. Installing or updating on one does nothing to the
-rest.
-
-## Updating
-
-Installs pin to a commit SHA rather than tracking `main`. Claude Code copies the
-plugin into `~/.claude/plugins/cache/<marketplace>/<plugin>/<sha>/` as a flat
-snapshot, not a git checkout, so pushing here changes nothing on an installed machine.
-
-Two steps, per machine.
+Add the marketplace once, then install either or both plugins.
 
 **Codex:**
 
 ```sh
-codex plugin marketplace upgrade htkoca   # refresh the catalog
-codex plugin add skills@htkoca            # re-snapshot the plugin
+codex plugin marketplace add https://github.com/htkoca/skills --ref main
+codex plugin add skills-software@htkoca
+codex plugin add skills-notes@htkoca
 ```
 
 **Claude Code:**
 
 ```sh
-claude plugin marketplace update htkoca   # refresh the catalog
-claude plugin update skills@htkoca        # re-snapshot the plugin
+claude plugin marketplace add https://github.com/htkoca/skills.git
+claude plugin install skills-software@htkoca
+claude plugin install skills-notes@htkoca
 ```
+
+Start a new Codex chat and restart Claude Code after installing. Each surface owns
+its installation; updating one does not update the others. Verify installation in
+regular ChatGPT separately.
+
+Skills are namespaced by plugin, for example `/skills-software:nextjs` and
+`/skills-notes:notes`. Agents also select skills when the request matches their
+description. Shared writing and agent conventions live in skills-software.
+
+## Updating
+
+Installs are snapshots pinned to a commit SHA. Pushing this repository does not
+update installed copies.
+
+**Codex:**
+
+```sh
+codex plugin marketplace upgrade htkoca
+codex plugin add skills-software@htkoca
+codex plugin add skills-notes@htkoca
+```
+
+**Claude Code:**
+
+```sh
+claude plugin marketplace update htkoca
+claude plugin update skills-software@htkoca
+claude plugin update skills-notes@htkoca
+```
+
+## Migrating from the old plugin
+
+The two plugins replace `skills@htkoca`. Install the replacements using the commands
+above, then remove the old plugin to avoid duplicate skill discovery:
+
+```sh
+codex plugin remove skills@htkoca
+claude plugin uninstall skills@htkoca
+```
+
+Update personal instructions and explicit skill references from `skills` to
+`skills-software` or `skills-notes`, as appropriate.
 
 ## Versioning
 
-[`.claude-plugin/plugin.json`](plugins/skills/.claude-plugin/plugin.json) and
-[`.codex-plugin/plugin.json`](plugins/skills/.codex-plugin/plugin.json) carry
-matching `version` values, bumped by patch on every commit. Minor and major are the
-owner's to set. See [AGENTS.md](AGENTS.md) for the rule agents follow.
+Both plugins carry matching versions in their `.claude-plugin/plugin.json` and
+`.codex-plugin/plugin.json` manifests. Bump the patch version in all four manifests
+on every commit. Minor and major are the owner's to set. See [AGENTS.md](AGENTS.md).
 
-The version is diagnostic, not a release channel: updates always move to the tip of
-`main`, and no older version is installable. What it buys is a readable answer to "is
-this install current?". Compare it against the `skills@htkoca` entry in
-`~/.claude/plugins/installed_plugins.json`, which records the resolved version and the
-`gitCommitSha` it came from.
+Compare installed versions with these manifests to identify stale snapshots.
+Claude Code records installed versions and commit SHAs in
+`~/.claude/plugins/installed_plugins.json`.
 
 ## Layout
 
-The repository root is the marketplace. The plugin package lives under
-`plugins/skills/` so an install copies a self-contained directory.
+The root catalogs list both self-contained plugin packages:
 
 ```text
-.claude-plugin/
-  marketplace.json      Claude marketplace catalog
-.agents/
-  plugins/
-    marketplace.json    Codex marketplace catalog
+.agents/plugins/marketplace.json   Codex marketplace catalog
+.claude-plugin/marketplace.json    Claude Code marketplace catalog
 plugins/
-  skills/
-    .claude-plugin/
-      plugin.json       Claude plugin manifest
-    .codex-plugin/
-      plugin.json       Codex plugin manifest
-    skills/
-      <name>/SKILL.md   one directory per skill
+  skills-software/
+    .claude-plugin/plugin.json
+    .codex-plugin/plugin.json
+    skills/<name>/SKILL.md
+  skills-notes/
+    .claude-plugin/plugin.json
+    .codex-plugin/plugin.json
+    skills/<name>/SKILL.md
 ```
-
-Both marketplaces point at `./plugins/skills`, which holds the only copy of the
-skills.

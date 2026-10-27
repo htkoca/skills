@@ -1,6 +1,6 @@
 ---
 name: figma
-description: Figma, figma.com URL, node-id, frame, design context, design tokens, Figma MCP, get_design_context, get_metadata, screenshot, design-to-code, transcribing a design, matching a component to the design. Use for any design-to-code work backed by Figma: implementing a node, reading values out of a file, or checking built UI against the design.
+description: "Figma, figma.com URL, node-id, frame, design context, design tokens, Figma MCP, get_design_context, get_metadata, screenshot, design-to-code, transcribing a design, matching a component to the design. Use for any design-to-code work backed by Figma: implementing a node, reading values out of a file, or checking built UI against the design."
 ---
 
 # Figma

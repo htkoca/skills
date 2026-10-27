@@ -1,6 +1,6 @@
 ---
 name: engineering
-description: Harness engineering, context engineering, agent design, SKILL.md, AGENTS.md, system prompt, subagent, tool definition, MCP server design, progressive disclosure, runbook, sidecar, agent permissions and authority, bad agent trajectory, agent keeps doing X. Use on an unresolved agent-design decision: authoring or debugging a skill, deciding what belongs in context vs. tools vs. code, or diagnosing why an agent behaves wrongly.
+description: "Harness engineering, context engineering, agent design, SKILL.md, AGENTS.md, system prompt, subagent, tool definition, MCP server design, progressive disclosure, runbook, sidecar, agent permissions and authority, bad agent trajectory, agent keeps doing X. Use on an unresolved agent-design decision: authoring or debugging a skill, deciding what belongs in context vs. tools vs. code, or diagnosing why an agent behaves wrongly."
 ---
 
 # Harness engineering

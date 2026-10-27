@@ -5,10 +5,22 @@
   },
   "plugins": [
     {
-      "name": "skills",
+      "name": "skills-software",
       "source": {
         "source": "local",
-        "path": "./plugins/skills"
+        "path": "./plugins/skills-software"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "skills-notes",
+      "source": {
+        "source": "local",
+        "path": "./plugins/skills-notes"
       },
       "policy": {
         "installation": "AVAILABLE",

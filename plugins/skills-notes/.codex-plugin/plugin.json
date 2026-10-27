@@ -1,0 +1,40 @@
+{
+  "name": "skills-notes",
+  "version": "0.1.22",
+  "description": "Tony Ko's Notion context and note-capture workflows for life advice, dating, relationships, chats, goals, housing, finances, travel, career, job search, resumes, interviews, client projects, business ideas, and resale. Read the personal or work workspace guide before advice or action. Capture facts from job postings and rental listings.",
+  "author": {
+    "name": "Tony Ko",
+    "url": "https://github.com/htkoca"
+  },
+  "repository": "https://github.com/htkoca/skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "notion",
+    "notes",
+    "personal",
+    "career",
+    "dating",
+    "job-postings",
+    "rental-listings"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Skills Notes",
+    "shortDescription": "Personal and work Notion context and note capture",
+    "longDescription": "Tony Ko's Notion context and note-capture workflows for life advice, dating, relationships, chats, goals, housing, finances, travel, career, job search, resumes, interviews, client projects, business ideas, and resale. Read the personal or work workspace guide before advice or action. Capture facts from job postings and rental listings.",
+    "developerName": "Tony Ko",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/htkoca/skills",
+    "brandColor": "#2563EB",
+    "defaultPrompt": [
+      "Read my personal Notion context before giving life or dating advice",
+      "Read my work Notion context before helping with career, client projects, or business ideas",
+      "Capture the facts from this job posting or rental listing using my notes conventions"
+    ]
+  }
+}
