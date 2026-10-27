@@ -29,10 +29,10 @@ Eighteen, in four groups.
 - [figma](plugins/skills/skills/figma/SKILL.md): reading designs out of Figma, node structure over screenshots
 - [notion](plugins/skills/skills/notion/SKILL.md): navigating and editing a Notion workspace over MCP
 - [vscode](plugins/skills/skills/vscode/SKILL.md): editor-session hygiene after a move or rename
-- [claude](plugins/skills/skills/claude/SKILL.md): Claude Code repo hygiene
 
 ### Agents
 
+- [agents](plugins/skills/skills/agents/SKILL.md): shared instructions and repo hygiene for Claude, Claude Code, ChatGPT, and Codex
 - [engineering](plugins/skills/skills/engineering/SKILL.md): harness engineering corpus and routing
 
 ### Scrapers
