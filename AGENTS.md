@@ -28,3 +28,13 @@ belong here. A skill that must run at a particular moment says so in its
 `description`.
 
 Skills ship to agents in other repos. Treat a change here as shipping.
+
+## Keep plugin READMEs in sync
+
+Each plugin owns its skill list in `plugins/<plugin>/README.md`. When adding,
+removing, renaming, or changing a skill description, update that README in the
+same change. List every skill with a working relative link and its full
+`SKILL.md` frontmatter description as visible text, including trigger words.
+Keep the plugin summary in sync with its manifests. The root README links to
+plugin READMEs; do not duplicate skill lists there or hide descriptions in HTML
+comments.
